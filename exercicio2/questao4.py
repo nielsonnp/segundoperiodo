@@ -3,7 +3,6 @@ sexo. Em seguida, o programa deve ser capaz de ler os mesmos dados e imprimir a 
 dados criados, que estarão armazenados em uma estrutura de dados. Estabeleça um critério de
 parada.'''
 
-
 class Pessoa:
 
     def __init__(self, nome, idade, sexo):
@@ -25,12 +24,19 @@ class Pessoa:
 
 lista = []
 
-p1 = Pessoa("Márcio", 43, "M")
-lista.append(p1)
-p2 = Pessoa("Biu", 37, "M")
-lista.append(p2)
-p3 = Pessoa("Mel", 10, "F")
-lista.append(p3)
+while True:
+
+    nome = input("Digite seu nome: ")
+
+    if nome == "-1":
+        break
+
+    idade = int(input("Digite sua idade: "))
+
+    sexo = input(("Digite seu sexo: "))
+
+    pes = Pessoa(nome, idade, sexo)
+    lista.append(pes)
 
 print(lista)
 
