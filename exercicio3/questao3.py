@@ -23,7 +23,7 @@ class ContaCorrente:
 numero1 = input("Digite o número da conta: ")
 nome = input("Digite o nome do cliente: ")
 print("=============================")
-conta = ContaCorrente(numero1, nome, 1000)
+conta = ContaCorrente(numero1, nome)
 
 print('Número da conta: {} '.format(conta.numero))
 print('Nome do Cliente: {} '.format(conta.nomeCorrentista))
