@@ -1,9 +1,10 @@
-''' Ordene as pessoas que precisam ser atendidas em um banco, informando
-quem é o primeiro e o último a ser atendido.'''
 
 class Fila:
     def __init__(self):
         self.fila = []
+
+    def tamanho(self):
+        return len(self.fila)
 
     def entrar(self, pessoa):
         self.fila.append(pessoa)
@@ -30,48 +31,57 @@ class Fila:
         else:
             return False
 
-class FilaUnica:
+class Hospital:
     def __init__(self):
-        self.fila_unica = Fila()
+        self.gestantes = Fila()
+        self.idosos = Fila()
+        self.demais = Fila()
 
-    def entrar_na_fila(self, pessoa):
-        self.fila_unica.entrar(pessoa)
+    def entrar_na_fila(self, nome, idade, eh_gestante):
+        if (eh_gestante == "Sim"):
+            self.gestantes.entrar(nome)
+        elif (idade > 60):
+            self.idosos.entrar(nome)
+        else:
+            self.demais.entrar(nome)
 
-    def sair_da_fila(self):
-        self.fila_unica.sair()
+    def ordem_atendimento(self):
+        for i in range (self.gestantes.tamanho()):
+            print(self.gestantes.primeiro())
+            self.gestantes.sair()
 
-    def proximo_da_fila(self):
-        proximo = self.fila_unica.primeiro()
-        self.fila_unica.sair()
-        return proximo
+        for i in range (self.idosos.tamanho()):
+            print(self.idosos.primeiro())
+            self.idosos.sair()
 
-    def ultimo_da_fila(self):
-        return self.fila_unica.ultimo()
+        for i in range (self.demais.tamanho()):
+            print(self.demais.primeiro())
+            self.demais.sair()
 
 
-banco = FilaUnica()
+hosp = Hospital()
 
 while True:
 
-    b1 = input("Nome: ")
+    nome = input('Digite seu nome: ')
 
-    if b1 == '-1':
+    if nome == "-1":
         break
-    else:
-        banco.entrar_na_fila(b1)
+
+    idade = int(input("Digite a Idade: "))
+    gestante = input("É gestante? ")
 
 
-print('Primeiro da fila: {}'.format(banco.proximo_da_fila()))
-
-print('Último da fila: {}' .format(banco.ultimo_da_fila()))
-
-'''banco.entrar_na_fila('Ramon')
-banco.entrar_na_fila('Ranyelson')
-banco.entrar_na_fila('Alan')
+    hosp.entrar_na_fila(nome, idade, gestante)
 
 
-print(banco.proximo_da_fila())
-print(banco.proximo_da_fila())
-print(banco.proximo_da_fila())
+print("Ordem de Atendimento: ")
 
-print(banco.ultimo_da_fila())'''
+
+hosp.ordem_atendimento()
+
+
+
+
+
+
