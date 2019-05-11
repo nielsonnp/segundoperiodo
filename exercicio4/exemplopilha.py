@@ -1,7 +1,5 @@
-''' Armazene os livros que você pegou na biblioteca do IFPB criando pilhas de
-acordo com as disciplinas.'''
 
-class PilhaDeLivros:
+class Pilha:
     def __init__(self):
         self.pilha = []
 
@@ -23,52 +21,47 @@ class PilhaDeLivros:
         else:
             return False
 
+    def tamanho(self):
+        return len(self.pilha)
 
-class Biblioteca:
+
+class GuardaRoupa:
     def __init__(self):
-        self.biblioteca = {}
+        self.guarda_roupa = Pilha()
+        self.cama = Pilha()
 
-    def add_pilha(self, disciplina):
-        self.biblioteca[disciplina] = PilhaDeLivros()
+    def guardar_roupa(self, peca):
+        self.guarda_roupa.empilhar(peca)
 
-    def empilhar_livro(self, disciplina, livro):
-        if (disciplina in self.biblioteca.keys()):
-            pilha = self.biblioteca[disciplina]
-            pilha.empilhar(livro)
+    def tirar_peca(self, peca):
+        while True:
+            roupa = self.guarda_roupa.topo()
+            if (roupa != peca):
+                self.guarda_roupa.desempilhar()
+                self.cama.empilhar(roupa)
 
-    def dempilhar_livro(self, disciplina):
-        if (disciplina in self.biblioteca.keys()):
-            pilha = self.biblioteca[disciplina]
-            pilha.desempilhar()
+            else:
+                self.guarda_roupa.desempilhar()
+                for i in range (self.cama.tamanho()):
+                    topo = self.cama.topo()
+                    self.cama.desempilhar()
+                    self.guarda_roupa.empilhar(topo)
 
-    def livro_do_topo(self, disciplina):
-        if (disciplina in self.biblioteca.keys()):
-            pilha = self.biblioteca[disciplina]
-            return pilha.topo()
-        return None
-
-    def nenhum_livro(self, disciplina):
-        pilha = self.biblioteca[disciplina]
-        return pilha.vazio()
+                break
 
 
-b1 = Biblioteca()
+r = input("Qual roupa? ")
 
-b1.add_pilha('Português')
-b1.add_pilha('Matemática')
+g = GuardaRoupa()
 
-b1.empilhar_livro("Português", "Port. Bás 1")
-b1.empilhar_livro("Português", "Port. Bás 2")
-b1.empilhar_livro("Português", "Port. Bás 3")
+while (r != '-1'):
+  g.guardar_roupa(r)
+  r = input("Qual roupa? ")
 
-print(b1.livro_do_topo("Português")) #Port. Bás 3
+print("Saiu!")
 
-b1.empilhar_livro("Matemática", "Mat. Bás 1")
-b1.empilhar_livro("Matemática", "Mat. Bás 2")
-b1.empilhar_livro("Matemática", "Mat. Bás 3")
+roupa_desejada = input("Você quer qual roupa? ")
+g.tirar_peca(roupa_desejada)
 
-print(b1.livro_do_topo("Matemática")) #Mat. Bás 3
-
-b1.dempilhar_livro("Matemática")
-print(b1.livro_do_topo("Matemática")) #Mat. Bás 2
-
+roupas = Pilha()
+print(roupas.topo())
