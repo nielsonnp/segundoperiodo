@@ -1,6 +1,22 @@
 
 #Selection Sort
 
+'''
+array = [1,45,10,35,100,13,147,500,80]
+size = len(array)
+
+
+for i in range(0,size):
+    for j in range(i+1,size):
+        if array[j] < array[i]:
+            min = array[j];
+            array[j] = array[i];
+            array[i] = min;
+
+
+
+print(array)'''
+
 lista = [1,45,10,35,100,13,147,500,80]
 
 def selection_sort(lista):
@@ -11,7 +27,7 @@ def selection_sort(lista):
                 lista[j] = lista[i];
                 lista[i] = min;
 
-        print(i, lista)
+        print(lista)
         input()
 
 selection_sort(lista)
