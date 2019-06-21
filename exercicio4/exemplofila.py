@@ -75,6 +75,7 @@ while True:
     hosp.entrar_na_fila(nome, idade, gestante)
 
 
+print("Saiu!")
 print("Ordem de Atendimento: ")
 
 
