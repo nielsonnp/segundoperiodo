@@ -17,17 +17,19 @@ for i in range(0,size):
 
 print(array)'''
 
-lista = [1,45,10,35,100,13,147,500,80]
+lista = [54, 26, 93, 17, 77, 31, 44, 55, 20]
 
 def selection_sort(lista):
-    for i in range(0,len(lista)):
-        for j in range(i+1,len(lista)):
-            if lista[j] < lista[i]:
-                min = lista[j];
-                lista[j] = lista[i];
-                lista[i] = min;
+    for i in range(len(lista)):
+        menor = i
+        for j in range(i+1, len(lista)):
+            if lista[j] < lista[menor]:
+                menor = j
+        t = lista[i]
+        lista[i] = lista[menor]
+        lista[menor] = t
 
-        print(lista)
+        print("Passo", i, lista)
         input()
 
 selection_sort(lista)
