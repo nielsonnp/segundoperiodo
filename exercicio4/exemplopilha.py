@@ -1,4 +1,3 @@
-
 class Pilha:
     def __init__(self):
         self.pilha = []
@@ -7,7 +6,7 @@ class Pilha:
         self.pilha.append(livro)
 
     def desempilhar(self):
-        if self.vazio() == False:
+        if (self.vazio() == False):
             self.pilha.pop(len(self.pilha) -1)
 
     def topo(self):
@@ -36,13 +35,14 @@ class GuardaRoupa:
     def tirar_peca(self, peca):
         while True:
             roupa = self.guarda_roupa.topo()
+            print(roupa)
             if (roupa != peca):
                 self.guarda_roupa.desempilhar()
                 self.cama.empilhar(roupa)
 
             else:
                 self.guarda_roupa.desempilhar()
-                for i in range (self.cama.tamanho()):
+                for i in range(self.cama.tamanho()):
                     topo = self.cama.topo()
                     self.cama.desempilhar()
                     self.guarda_roupa.empilhar(topo)
@@ -63,5 +63,7 @@ print("Saiu!")
 roupa_desejada = input("Você quer qual roupa? ")
 g.tirar_peca(roupa_desejada)
 
-roupas = Pilha()
-print(roupas.topo())
+
+
+
+
