@@ -17,18 +17,23 @@ for i in range(tam_lista):
 
 print(lista)'''
 
-lista = [30, 50, 10, 35, 70, 45, 80, 100, 22]
 
-def bubblesort(lista):
+
+# A) bubble_sort
+
+lista = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+
+
+def bubble_sort(lista):
     for i in range(1, len(lista)):
-        for j in range(len(lista)-1):
+        for j in range(len(lista) - 1):
             if lista[j] > lista[j + 1]:
-                temp = lista[j]
+                a = lista[j]
                 lista[j] = lista[j + 1]
-                lista[j + 1] = temp
+                lista[j + 1] = a
 
-        print(i, lista)
+        print("Passo", i, lista)
+
         input()
 
-bubblesort(lista)
-
+bubble_sort(lista)
